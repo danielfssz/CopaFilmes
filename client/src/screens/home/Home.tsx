@@ -89,7 +89,13 @@ export default class Home extends Component {
             <Col>
               <div className="d-flex justify-content-between">
                 <p className="textSelectedItem">Selecionado 0 de 8 itens</p>
-                <Button color="secondary">Gerar Meu Campeonato</Button>
+                <Button
+                  color="secondary"
+                  href="/result"
+                  className="btnGerarCampeonato"
+                >
+                  Gerar Meu Campeonato
+                </Button>
               </div>
             </Col>
             <Col>

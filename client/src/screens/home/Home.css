@@ -5,3 +5,8 @@
   width: 81px;
   word-wrap: unset;
 }
+.btnGerarCampeonato {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
