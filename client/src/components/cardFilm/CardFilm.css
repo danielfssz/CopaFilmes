@@ -1,0 +1,21 @@
+.card {
+  height: 70px;
+  margin-top: 7%;
+  border-color: #0f5d9b;
+}
+.card-content {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 8%;
+}
+.card-text {
+  margin-left: 3%;
+}
+.cart-text-title {
+  color: #000;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.cart-text-year {
+  color: gray;
+}
