@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Button } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
 import CardFilm from '../../components/cardFilm/CardFilm';
 
@@ -89,13 +90,11 @@ export default class Home extends Component {
             <Col>
               <div className="d-flex justify-content-between">
                 <p className="textSelectedItem">Selecionado 0 de 8 itens</p>
-                <Button
-                  color="secondary"
-                  href="/result"
-                  className="btnGerarCampeonato"
-                >
-                  Gerar Meu Campeonato
-                </Button>
+                <NavLink to="result">
+                  <Button color="secondary" className="btnGerarCampeonato">
+                    Gerar Meu Campeonato
+                  </Button>
+                </NavLink>
               </div>
             </Col>
             <Col>
