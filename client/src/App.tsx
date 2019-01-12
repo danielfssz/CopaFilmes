@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Header from './components/header/Header'
 import Main from './screens/Main'
+import { Container } from 'reactstrap';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Container fluid>
         <Header />
         <Main />
-      </div>
+      </Container>
     );
   }
 }
