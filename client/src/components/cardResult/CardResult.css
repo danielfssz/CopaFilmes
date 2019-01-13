@@ -1,0 +1,31 @@
+.card-result {
+  height: 100%;
+}
+.card-result-position {
+  background-color: #0f5d9b;
+  width: 10%;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-result-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4%;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .card-result-position {
+    font-size: 1.3em;
+    width: 15%;
+  }
+  .card-result-title {
+    margin-left: 4%;
+  }
+}

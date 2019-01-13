@@ -1,0 +1,9 @@
+.resultArea {
+  margin-top: 1%;
+}
+
+@media (max-width: 767px) {
+  .resultArea {
+    margin-top: 5%;
+  }
+}
