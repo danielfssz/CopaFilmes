@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button, Alert } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -13,19 +13,24 @@ class Home extends Component {
 
   constructor(props: any) {
     super(props);
+
     this.handleChange = this.handleChange.bind(this);
   }
 
-  private handleChange(filme: any) {
-    this.props.atualizaLista(filme, this.props.listaSelecionados);
-    console.log(this.props.listaSelecionados);
+  private handleChange(e: any, filme: any) {
+    if (e.target.checked) {
+      if (this.props.listaSelecionados.length < 8) {
+        this.props.atualizaLista(filme, this.props.listaSelecionados);
+        e.target.checked = true;
+      } else e.target.checked = false;
+    } else this.props.atualizaLista(filme, this.props.listaSelecionados);
   }
 
   private _carregaLista(): any {
     this.props.carregaLista();
 
     if (this.props.listaFilmes.length) {
-      return this.CardList();
+      return this._CardList();
     }
     if (this.props.erro) {
       return (
@@ -38,7 +43,7 @@ class Home extends Component {
     }
   }
 
-  private CardList = () => {
+  private _CardList = () => {
     let list = [];
     let c1 = 0;
     let c2 = 0;
@@ -81,21 +86,39 @@ class Home extends Component {
             md={{ size: 10, offset: 1 }}
             lg={{ size: 10, offset: 1 }}
           >
-            <Col>
-              <div>
-                <p>{this.props.erro}</p>
-              </div>
-              <div className="d-flex justify-content-between">
+            <div>
+              <p>{this.props.erro}</p>
+            </div>
+            <Row>
+              <Col sm={{ size: 12 }} md={{ size: 3 }} lg={{ size: 3 }}>
                 <p className="textSelectedItem">
                   Selecionado {this.props.listaSelecionados.length} de 8 itens
                 </p>
+              </Col>
+              <Col
+                sm={{ size: 12 }}
+                md={{ size: 4, offset: 1 }}
+                lg={{ size: 4, offset: 1 }}
+              >
+                <Alert
+                  className="alert-max-itens"
+                  isOpen={this.props.listaSelecionados.length > 7}
+                >
+                  Você já selecionou os 8 itens!
+                </Alert>
+              </Col>
+              <Col
+                sm={{ size: 12 }}
+                md={{ size: 3, offset: 1 }}
+                lg={{ size: 3, offset: 1 }}
+              >
                 <NavLink to="result">
                   <Button color="secondary" className="btnGerarCampeonato">
                     Gerar Meu Campeonato
                   </Button>
                 </NavLink>
-              </div>
-            </Col>
+              </Col>
+            </Row>
             <Col>{this._carregaLista()}</Col>
           </Col>
         </Row>

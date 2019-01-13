@@ -12,7 +12,7 @@ const CardFilm = (props: any) => {
             className="form-check-input"
             type="checkbox"
             onChange={e => {
-              props.onChangeCheckBok(props.filme);
+              props.onChangeCheckBok(e, props.filme);
             }}
           />
         </div>
