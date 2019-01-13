@@ -1,9 +1,10 @@
-import axios from 'axios';
+import APIService from '../app/service/api.service';
 
 export const carregaLista = () => {
+  let apiService: APIService = new APIService();
   return (dispatch: any) => {
-    axios
-      .get('http://copadosfilmes.azurewebsites.net/api/filmes')
+    apiService
+      .getFilmes()
       .then((response: any) => {
         retornaListaSucesso(dispatch, response.data);
       })
