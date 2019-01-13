@@ -3,7 +3,7 @@ import { Row, Col, Button, Alert } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { carregaLista, atualizaLista } from '../../actions/SelecaoActions';
+import { carregaLista, atualizaLista } from '../../../actions/SelecaoActions';
 import CardFilm from '../../components/cardFilm/CardFilm';
 
 import './Home.css';
@@ -77,6 +77,10 @@ class Home extends Component {
     return list;
   };
 
+  private _gerarMeuCampeonato() {
+    console.log(this.props.listaSelecionados);
+  }
+
   render() {
     return (
       <div>
@@ -113,7 +117,11 @@ class Home extends Component {
                 lg={{ size: 3, offset: 1 }}
               >
                 <NavLink to="result">
-                  <Button color="secondary" className="btnGerarCampeonato">
+                  <Button
+                    color="secondary"
+                    className="btnGerarCampeonato"
+                    onClick={() => this._gerarMeuCampeonato()}
+                  >
                     Gerar Meu Campeonato
                   </Button>
                 </NavLink>

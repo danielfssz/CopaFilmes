@@ -4,9 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import ReduxThunk from 'redux-thunk';
 
-import Header from './components/header/Header';
-import Main from './screens/Main';
-import Footer from './components/footer/Footer';
+import Header from './app/components/header/Header';
+import Main from './app/screens/Main';
+import Footer from './app/components/footer/Footer';
 import { Container } from 'reactstrap';
 
 class App extends Component {
