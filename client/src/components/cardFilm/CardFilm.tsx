@@ -8,7 +8,13 @@ const CardFilm = (props: any) => {
     <Card>
       <div className="form-check form-check-inline card-content">
         <div>
-          <input className="form-check-input" type="checkbox" />
+          <input
+            className="form-check-input"
+            type="checkbox"
+            onChange={e => {
+              props.onChangeCheckBok(props.filme);
+            }}
+          />
         </div>
         <div className="card-text">
           <p className="form-check-label cart-text-title">

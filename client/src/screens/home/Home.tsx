@@ -3,15 +3,22 @@ import { Row, Col, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { carregaLista } from '../../actions/SelecaoActions';
+import { carregaLista, atualizaLista } from '../../actions/SelecaoActions';
 import CardFilm from '../../components/cardFilm/CardFilm';
 
 import './Home.css';
 
 class Home extends Component {
   public props: any;
+
   constructor(props: any) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  private handleChange(filme: any) {
+    this.props.atualizaLista(filme, this.props.listaSelecionados);
+    console.log(this.props.listaSelecionados);
   }
 
   private _carregaLista(): any {
@@ -50,6 +57,7 @@ class Home extends Component {
             <CardFilm
               key={this.props.listaFilmes[c2].id}
               filme={this.props.listaFilmes[c2]}
+              onChangeCheckBok={this.handleChange}
             />
           </Col>
         );
@@ -78,7 +86,9 @@ class Home extends Component {
                 <p>{this.props.erro}</p>
               </div>
               <div className="d-flex justify-content-between">
-                <p className="textSelectedItem">Selecionado 0 de 8 itens</p>
+                <p className="textSelectedItem">
+                  Selecionado {this.props.listaSelecionados.length} de 8 itens
+                </p>
                 <NavLink to="result">
                   <Button color="secondary" className="btnGerarCampeonato">
                     Gerar Meu Campeonato
@@ -96,10 +106,11 @@ class Home extends Component {
 
 const mapStateToProps = (state: any) => ({
   listaFilmes: state.SelecaoReducer.listaFilmes,
+  listaSelecionados: state.SelecaoReducer.listaSelecionados,
   erro: state.SelecaoReducer.erro
 });
 
 export default connect(
   mapStateToProps,
-  { carregaLista }
+  { carregaLista, atualizaLista }
 )(Home);
