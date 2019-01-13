@@ -1,3 +1,11 @@
 .page-footer {
   margin-top: 2%;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
