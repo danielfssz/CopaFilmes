@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export default class APIService {
-  private address: string = 'https://localhost:5001';
+  // Colocar o IP e porta da API ASP.Net Core
+  private address: string = 'http://10.19.164.105:5001';
 
   private axiosConfig = {
     headers: {
