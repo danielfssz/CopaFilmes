@@ -14,11 +14,16 @@ const Header = (props: any) => {
         <Jumbotron className="header d-flex justify-content-center">
           <div className="content d-flex align-items-center">
             <small>CAMPEONATO DE FILMES</small>
-            <p className="stage">Fase de Seleção</p>
+            <p className="stage">
+              {window.location.pathname == '/' && 'Fase de Seleção'}
+              {window.location.pathname == '/result' && 'Resultado'}
+            </p>
             <hr />
             <p className="result">
-              Selecione 8 filmes que voce deseja que entrem na competição e
-              depois pressione o botão Gerar Meu Campenato para prosseguir
+              {window.location.pathname == '/' &&
+                'Selecione 8 filmes que voce deseja que entrem na competição e depois pressione o botão Gerar Meu Campenato para prosseguir'}
+              {window.location.pathname == '/result' &&
+                'Veja o resultado final do Campeonato de filmes de forma simples e rápida'}
             </p>
           </div>
         </Jumbotron>
