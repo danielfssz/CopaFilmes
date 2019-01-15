@@ -6,26 +6,12 @@ export const carregaLista = () => {
     apiService
       .getFilmes()
       .then((response: any) => {
-        retornaListaSucesso(dispatch, response.data);
+        carregaListaSucesso(dispatch, response.data);
       })
       .catch((erro: any) => {
-        retornaListaErro(dispatch, erro);
+        carregaListaErro(dispatch, erro);
       });
   };
-};
-
-const retornaListaSucesso = (dispatch: any, data: any) => {
-  dispatch({
-    type: 'carrega_lista_sucesso',
-    payload: data
-  });
-};
-
-const retornaListaErro = (dispatch: any, erro: any) => {
-  dispatch({
-    type: 'carrega_lista_erro',
-    payload: erro.message
-  });
 };
 
 export const atualizaLista = (filme: any, listaSelecionados: any[]) => {
@@ -38,4 +24,20 @@ export const atualizaLista = (filme: any, listaSelecionados: any[]) => {
     type: 'atualiza_lista',
     payload: listaSelecionados
   };
+};
+
+const carregaListaSucesso = (dispatch: any, data: any) => {
+  dispatch({
+    type: 'carrega_lista_sucesso',
+    payload: data
+  });
+};
+
+const carregaListaErro = (dispatch: any, erro: any) => {
+  dispatch({
+    type: 'carrega_lista_erro',
+    payload:
+      erro.message +
+      '- Erro ao recuperar os dados, entre em contato com o desenvolvedor.'
+  });
 };
