@@ -11,8 +11,27 @@ namespace CopaFilmes.Models {
             _ListaFilmes = listaFilmes.OrderBy (filme => filme.Titulo).ToList ();
         }
 
-        public void IniciarPartidas () {
-            Console.WriteLine (_ListaFilmes);
+        public List<Filme> IniciarCampeonato () {
+            List<Filme> proximaFase = new List<Filme> ();
+            List<Filme> vencedores = new List<Filme> ();
+
+            do {
+                do {
+                    var vencedorPartida = Partida.RealizarPartida (_ListaFilmes.FirstOrDefault (), _ListaFilmes.LastOrDefault ());
+                    _ListaFilmes.Remove (_ListaFilmes.FirstOrDefault ());
+                    _ListaFilmes.Remove (_ListaFilmes.LastOrDefault ());
+                    proximaFase.Add (vencedorPartida);
+                } while (_ListaFilmes.Count > 0);
+                _ListaFilmes.AddRange (proximaFase);
+                proximaFase.Clear ();
+                if (_ListaFilmes.Count <= 2) {
+                    var vencedor = Partida.RealizarPartida (_ListaFilmes.FirstOrDefault (), _ListaFilmes.LastOrDefault ());
+                    vencedores.Add (vencedor);
+                    vencedores.Add (_ListaFilmes.LastOrDefault ());
+                }
+            }
+            while (vencedores.Count <= 0);
+            return vencedores;
         }
 
     }
