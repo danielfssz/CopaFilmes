@@ -27,8 +27,9 @@ namespace CopaFilmes.Services {
 
                 // Deserializa e converte os dados retornados em um List<Filme>
                 return JsonConvert.DeserializeObject<List<Filme>> (dados);
+            } else {
+                throw new Exception ((int) response.StatusCode + "-" + response.StatusCode.ToString ());
             }
-            return new List<Filme> ();
         }
 
     }
