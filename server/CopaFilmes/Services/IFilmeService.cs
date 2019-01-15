@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CopaFilmes.Models;
 
-namespace CopaFilmes.Models {
-    public interface IFilmeRepository {
+namespace CopaFilmes.Services {
+    public interface IFilmeService {
         Task<List<Filme>> GetFilmesAsync ();
     }
 }

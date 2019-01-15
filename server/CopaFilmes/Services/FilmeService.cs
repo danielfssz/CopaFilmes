@@ -4,12 +4,13 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CopaFilmes.Models;
+using CopaFilmes.Services;
 using Newtonsoft.Json;
 
-namespace CopaFilmes.Repository {
-    public class FilmeRepository : IFilmeRepository {
+namespace CopaFilmes.Services {
+    public class FilmeService : IFilmeService {
         static readonly HttpClient client = new HttpClient ();
-        public FilmeRepository () {
+        public FilmeService () {
             // Configura o endereço da api
             client.BaseAddress = new Uri ("http://copadosfilmes.azurewebsites.net/");
             // Add os headers
@@ -29,5 +30,6 @@ namespace CopaFilmes.Repository {
             }
             return new List<Filme> ();
         }
+
     }
 }
