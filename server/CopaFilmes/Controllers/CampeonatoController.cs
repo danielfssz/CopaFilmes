@@ -10,11 +10,9 @@ namespace CopaFilmes.Controllers {
     public class CampeonatoController : ControllerBase {
 
         [HttpPost]
-        public void Post ([FromBody] List<Filme> listaFilmes) {
+        public List<Filme> Post ([FromBody] List<Filme> listaFilmes) {
             Campeonato campeonato = new Campeonato (listaFilmes);
-
-            campeonato.IniciarPartidas ();
-
+            return campeonato.IniciarCampeonato ();
         }
     }
 }
