@@ -29,17 +29,18 @@ class Home extends Component {
   private _carregaLista(): any {
     this.props.carregaLista();
 
-    if (this.props.listaFilmes.length) {
-      return this._CardList();
-    }
     if (this.props.erro) {
       return (
         <div>
+          <hr />
           <div className="alert alert-danger" role="alert">
-            {this.props.erro} - Entre em contato com o desenvolvedor
+            {this.props.erro} - Erro ao recuperar os dados, entre em contato com
+            o desenvolvedor.
           </div>
         </div>
       );
+    } else if (this.props.listaFilmes.length > 0) {
+      return this._CardList();
     }
   }
 
@@ -90,9 +91,6 @@ class Home extends Component {
             md={{ size: 10, offset: 1 }}
             lg={{ size: 10, offset: 1 }}
           >
-            <div>
-              <p>{this.props.erro}</p>
-            </div>
             <Row>
               <Col sm={{ size: 12 }} md={{ size: 3 }} lg={{ size: 3 }}>
                 <p className="textSelectedItem">

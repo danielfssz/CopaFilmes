@@ -1,18 +1,17 @@
 import axios from 'axios';
 
 export default class APIService {
-  private addressPost: string = 'http://10.19.164.105:5000';
+  private address: string = 'https://localhost:5001';
 
   private axiosConfig = {
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json;charset=UTF-8'
     }
   };
   public uploadFilme(listaFilmes: any[]): Promise<any> {
     return new Promise((resolve, reject) => {
       axios
-        .post(this.addressPost, listaFilmes, this.axiosConfig)
+        .post(this.address, listaFilmes, this.axiosConfig)
         .then(res => {
           resolve(res);
         })
@@ -24,12 +23,12 @@ export default class APIService {
   public getFilmes(): Promise<any[]> {
     return new Promise((resolve, reject) => {
       axios
-        .get('http://copadosfilmes.azurewebsites.net/api/filmes')
+        .get(this.address + '/api/filmes', this.axiosConfig)
         .then((response: any) => {
           resolve(response);
         })
         .catch((erro: any) => {
-          resolve(erro);
+          reject(erro);
         });
     });
   }
