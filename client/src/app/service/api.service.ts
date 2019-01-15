@@ -8,10 +8,14 @@ export default class APIService {
       'Content-Type': 'application/json;charset=UTF-8'
     }
   };
-  public uploadFilme(listaFilmes: any[]): Promise<any> {
+  public uploadFilmes(listaSelecionados: any[]): Promise<any> {
     return new Promise((resolve, reject) => {
       axios
-        .post(this.address, listaFilmes, this.axiosConfig)
+        .post(
+          this.address + '/api/campeonato',
+          listaSelecionados,
+          this.axiosConfig
+        )
         .then(res => {
           resolve(res);
         })

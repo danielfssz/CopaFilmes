@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Alert } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import APIService from '../../service/api.service';
 
 import { carregaLista, atualizaLista } from '../../../actions/SelecaoActions';
-import CardFilm from '../../components/cardFilm/CardFilm';
 
 import './Home.css';
+import CardFilm from '../../components/cardFilm/CardFilm';
 
 class Home extends Component {
   public props: any;
@@ -29,17 +30,7 @@ class Home extends Component {
   private _carregaLista(): any {
     this.props.carregaLista();
 
-    if (this.props.erro) {
-      return (
-        <div>
-          <hr />
-          <div className="alert alert-danger" role="alert">
-            {this.props.erro} - Erro ao recuperar os dados, entre em contato com
-            o desenvolvedor.
-          </div>
-        </div>
-      );
-    } else if (this.props.listaFilmes.length > 0) {
+    if (this.props.listaFilmes.length > 0) {
       return this._CardList();
     }
   }
@@ -79,7 +70,8 @@ class Home extends Component {
   };
 
   private _gerarMeuCampeonato() {
-    console.log(this.props.listaSelecionados);
+    let apiService: APIService = new APIService();
+    apiService.uploadFilmes(this.props.listaSelecionados);
   }
 
   render() {
@@ -114,18 +106,24 @@ class Home extends Component {
                 md={{ size: 3, offset: 1 }}
                 lg={{ size: 3, offset: 1 }}
               >
-                <NavLink to="result">
-                  <Button
-                    color="secondary"
-                    className="btnGerarCampeonato"
-                    onClick={() => this._gerarMeuCampeonato()}
-                  >
+                <NavLink to="result" onClick={() => this._gerarMeuCampeonato()}>
+                  <Button color="secondary" className="btnGerarCampeonato">
                     Gerar Meu Campeonato
                   </Button>
                 </NavLink>
               </Col>
             </Row>
-            <Col>{this._carregaLista()}</Col>
+            <Col>
+              {this.props.erro && (
+                <div>
+                  <hr />
+                  <div className="alert alert-danger" role="alert">
+                    {this.props.erro}
+                  </div>
+                </div>
+              )}
+              {!this.props.erro && this._carregaLista()}
+            </Col>
           </Col>
         </Row>
       </div>
