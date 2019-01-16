@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Alert } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
@@ -112,11 +112,16 @@ class Home extends Component {
                 md={{ size: 3, offset: 1 }}
                 lg={{ size: 3, offset: 1 }}
               >
-                <NavLink to="result" onClick={() => this._gerarMeuCampeonato()}>
-                  <Button color="secondary" className="btnGerarCampeonato">
-                    Gerar Meu Campeonato
-                  </Button>
-                </NavLink>
+                <Button
+                  color="secondary"
+                  className="btnGerarCampeonato"
+                  onClick={() => this._gerarMeuCampeonato()}
+                >
+                  Gerar Meu Campeonato
+                  {this.props.listaVencedores.length > 0 && (
+                    <Redirect to="result" />
+                  )}
+                </Button>
               </Col>
             </Row>
             <Col>
@@ -140,6 +145,7 @@ class Home extends Component {
 const mapStateToProps = (state: any) => ({
   listaFilmes: state.SelecaoReducer.listaFilmes,
   listaSelecionados: state.SelecaoReducer.listaSelecionados,
+  listaVencedores: state.SelecaoReducer.listaVencedores,
   erro: state.SelecaoReducer.erro
 });
 
