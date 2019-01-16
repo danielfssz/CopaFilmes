@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Alert } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
 import {
@@ -20,6 +20,10 @@ class Home extends Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+
+  public state: { [key: string]: any } = {
+    resultadoCampeonato: false
+  };
 
   private handleChange(e: any, filme: any) {
     if (e.target.checked) {
@@ -80,7 +84,16 @@ class Home extends Component {
     this.props.carregaVencedores(this.props.listaSelecionados);
   }
 
+  componentWillReceiveProps() {
+    if (this.props.listaVencedores.length > 0) {
+      this.setState({ resultadoCampeonato: true });
+    }
+  }
+
   render() {
+    if (this.state.resultadoCampeonato) {
+      return <Redirect to="result" />;
+    }
     return (
       <div>
         <Row>
@@ -118,9 +131,6 @@ class Home extends Component {
                   onClick={() => this._gerarMeuCampeonato()}
                 >
                   Gerar Meu Campeonato
-                  {this.props.listaVencedores.length > 0 && (
-                    <Redirect to="result" />
-                  )}
                 </Button>
               </Col>
             </Row>
