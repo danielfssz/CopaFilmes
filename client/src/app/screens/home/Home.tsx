@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Alert } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import APIService from '../../service/api.service';
 
-import { carregaLista, atualizaLista } from '../../../actions/SelecaoActions';
+import {
+  carregaLista,
+  atualizaListaSelecionados,
+  carregaVencedores
+} from '../../../actions/CampeonatoActions';
 
 import './Home.css';
 import CardFilm from '../../components/cardFilm/CardFilm';
@@ -21,10 +24,14 @@ class Home extends Component {
   private handleChange(e: any, filme: any) {
     if (e.target.checked) {
       if (this.props.listaSelecionados.length < 8) {
-        this.props.atualizaLista(filme, this.props.listaSelecionados);
+        this.props.atualizaListaSelecionados(
+          filme,
+          this.props.listaSelecionados
+        );
         e.target.checked = true;
       } else e.target.checked = false;
-    } else this.props.atualizaLista(filme, this.props.listaSelecionados);
+    } else
+      this.props.atualizaListaSelecionados(filme, this.props.listaSelecionados);
   }
 
   private _carregaLista(): any {
@@ -70,8 +77,7 @@ class Home extends Component {
   };
 
   private _gerarMeuCampeonato() {
-    let apiService: APIService = new APIService();
-    apiService.uploadFilmes(this.props.listaSelecionados);
+    this.props.carregaVencedores(this.props.listaSelecionados);
   }
 
   render() {
@@ -139,5 +145,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
   mapStateToProps,
-  { carregaLista, atualizaLista }
+  { carregaLista, atualizaListaSelecionados, carregaVencedores }
 )(Home);
