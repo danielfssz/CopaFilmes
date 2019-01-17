@@ -31,5 +31,18 @@ namespace CopaFilmes.Test {
             //Then
             Assert.Equal (listaDeCampeoesMock.FirstOrDefault ().Id, filmesCampeoesASeremTestados.FirstOrDefault ().Id);
         }
+
+        [Fact]
+        public void TestaPartida () {
+            //Given
+            var filmePerdedor = new Filme { Id = "tt3606756", Titulo = "Os Incríveis 2", Ano = 2018, Nota = 8.5 };
+
+            var filmeGanhador = new Filme { Id = "tt4154756", Titulo = "Vingadores: Guerra Infinita", Ano = 2018, Nota = 8.8 };
+            //When
+            var resultadoDaPartida = Partida.RealizarPartida (filmePerdedor, filmeGanhador);
+
+            //Then
+            Assert.Equal (filmeGanhador.Id, resultadoDaPartida.Id);
+        }
     }
 }
