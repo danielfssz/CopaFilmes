@@ -19,9 +19,7 @@ namespace CopaFilmes {
 
             var hostUrl = configuration["hosturl"];
             if (string.IsNullOrEmpty (hostUrl)) {
-                string nome = Dns.GetHostName ();
-                IPAddress[] ip = Dns.GetHostAddresses (nome);
-                hostUrl = "http://" + ip[1].ToString () + ":5001";
+                hostUrl = "http://localhost:5001";
             }
 
             var host = new WebHostBuilder ()
