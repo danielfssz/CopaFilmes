@@ -115,9 +115,20 @@ class Home extends Component {
               >
                 <Alert
                   className="alert-max-itens"
-                  isOpen={this.props.listaSelecionados.length > 7}
+                  isOpen={this.props.listaSelecionados.length > 0}
                 >
-                  Você já selecionou os 8 itens!
+                  {this.props.listaSelecionados.length > 7 && (
+                    <label>Clique no botão e descubra o vencedor!</label>
+                  )}
+
+                  {this.props.listaSelecionados.length < 8 && (
+                    <label>
+                      Selecione mais {8 - this.props.listaSelecionados.length}{' '}
+                      {this.props.listaSelecionados.length < 7
+                        ? 'itens!'
+                        : 'item!'}
+                    </label>
+                  )}
                 </Alert>
               </Col>
               <Col
@@ -126,9 +137,14 @@ class Home extends Component {
                 lg={{ size: 3, offset: 1 }}
               >
                 <Button
-                  color="secondary"
+                  color={
+                    this.props.listaSelecionados.length > 7
+                      ? 'success'
+                      : 'secondary'
+                  }
                   className="btnGerarCampeonato"
                   onClick={() => this._gerarMeuCampeonato()}
+                  disabled={this.props.listaSelecionados.length < 8}
                 >
                   Gerar Meu Campeonato
                 </Button>
