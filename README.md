@@ -10,14 +10,6 @@ As telas da Copa Filmes são responsivas, ao executar o projeto você poderá ve
 A Copa de Filmes necessita do [.NET Core](https://dotnet.microsoft.com/download)v2.2 e o [Node.js](https://nodejs.org/en/)v10+ para executar, caso você não possua alguma dependência clique no link e faça o download.
 
 Instalada as dependências, no terminal do seu sistema operacional entre na pasta do repositório e digite os comandos:
-#### Front-End
-```sh
-$ cd client
-$ npm install
-$ npm start
-```
-Em uma nova janela do terminal, entre na pasta do repositório e digite os comandos:
-
 #### Back-End
 ```sh
 $ cd server
@@ -25,17 +17,32 @@ $ dotnet build
 $ dotnet run
 ```
 
-## Como executar os testes:
-Entre na pasta raiz do repositório e digite os comandos:
+Em uma nova janela do terminal, entre na pasta do repositório e digite os comandos:
+
 #### Front-End
 ```sh
 $ cd client
-$ npm run test
+$ npm install
+$ npm start
 ```
-Em uma nova janela do terminal, entre na pasta do repositório e digite os comandos:
+
+
+
+## Como executar os testes:
+Entre na pasta raiz do repositório e digite os comandos:
 
 #### Back-End
 ```sh
 $ cd server
 $ dotnet test
 ```
+
+Em uma nova janela do terminal, entre na pasta do repositório e digite os comandos:
+
+#### Front-End
+```sh
+$ cd client
+$ npm run test
+```
+
+
