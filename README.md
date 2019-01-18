@@ -4,7 +4,7 @@ A Copa do mundo de filmes funciona da seguinte maneira: uma lista inicial de 8 f
 ## Como executar o projeto:
 É necessário clonar o repositório para uma pasta em seu computador.
 
-A Copa de Filmes necessita do [.NET Core](https://dotnet.microsoft.com/download)v2.2 e o [Node.js]((https://nodejs.org/en/))v10+ para executar.
+A Copa de Filmes necessita do [.NET Core](https://dotnet.microsoft.com/download)v2.2 e o [Node.js](https://nodejs.org/en/)v10+ para executar, caso você não possua alguma dependência clique no link e faça o download.
 
 Instalada as dependências, no terminal do seu sistema operacional entre na pasta do repositório e digite os comandos:
 #### Front-End
