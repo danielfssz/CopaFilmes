@@ -40,8 +40,11 @@ namespace CopaFilmes.Models {
                     var vencedor = Partida.RealizarPartida (_ListaFilmes.FirstOrDefault (), _ListaFilmes.LastOrDefault ());
                     vencedores.Add (vencedor);
 
-                    if (!vencedor.Equals (_ListaFilmes.LastOrDefault ()))
+                    if (vencedor.Equals (_ListaFilmes.FirstOrDefault ())) {
                         vencedores.Add (_ListaFilmes.LastOrDefault ());
+                    } else if (vencedor.Equals (_ListaFilmes.LastOrDefault ())) {
+                        vencedores.Add (_ListaFilmes.FirstOrDefault ());
+                    }
                 }
             }
             while (vencedores.Count <= 0);
