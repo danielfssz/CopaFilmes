@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-
-import CardResult from '../../components/cardResult/CardResult';
-
-import './Result.css';
 import { carregaVencedores } from '../../../actions/CampeonatoActions';
+import CardResult from '../../components/cardResult/CardResult';
+import './Result.css';
 
 class Result extends Component {
   public props: any;
@@ -53,6 +51,23 @@ class Result extends Component {
             lg={{ size: 10, offset: 1 }}
           >
             <Col>{this.exibeResultado()}</Col>
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <Row>
+          <Col
+            sm={{ size: 2, offset: 1 }}
+            md={{ size: 2, offset: 1 }}
+            lg={{ size: 2, offset: 1 }}
+          >
+            <Button
+              onClick={() => {
+                window.location.replace('/');
+              }}
+            >
+              Voltar
+            </Button>
           </Col>
         </Row>
       </div>
