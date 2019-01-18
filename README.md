@@ -12,9 +12,15 @@ A Copa de Filmes necessita do [.NET Core](https://dotnet.microsoft.com/download)
 Instalada as dependências, no terminal do seu sistema operacional entre na pasta do repositório e digite os comandos:
 #### Back-End
 ```sh
-$ cd server
+$ cd server\CopaFilmes
 $ dotnet build
 $ dotnet run
+```
+
+Aguarde aparecer a seguinte mensagem no terminal:
+```sh
+Now listening on: http://localhost:5001
+Application started. Press Ctrl+C to shut down.
 ```
 
 Em uma nova janela do terminal, entre na pasta do repositório e digite os comandos:
@@ -33,7 +39,7 @@ Entre na pasta raiz do repositório e digite os comandos:
 
 #### Back-End
 ```sh
-$ cd server
+$ cd server\CopaFilmes.Test
 $ dotnet test
 ```
 
