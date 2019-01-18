@@ -16,18 +16,32 @@ namespace CopaFilmes.Models {
             List<Filme> vencedores = new List<Filme> ();
 
             do {
-                do {
-                    var vencedorPartida = Partida.RealizarPartida (_ListaFilmes.FirstOrDefault (), _ListaFilmes.LastOrDefault ());
-                    _ListaFilmes.Remove (_ListaFilmes.FirstOrDefault ());
-                    _ListaFilmes.Remove (_ListaFilmes.LastOrDefault ());
-                    proximaFase.Add (vencedorPartida);
-                } while (_ListaFilmes.Count > 0);
+                var vencedorPartida = Partida.RealizarPartida (_ListaFilmes.FirstOrDefault (), _ListaFilmes.LastOrDefault ());
+                _ListaFilmes.Remove (_ListaFilmes.FirstOrDefault ());
+                _ListaFilmes.Remove (_ListaFilmes.LastOrDefault ());
+                proximaFase.Add (vencedorPartida);
+            } while (_ListaFilmes.Count > 0);
+
+            do {
                 _ListaFilmes.AddRange (proximaFase);
                 proximaFase.Clear ();
+
+                do {
+                    var vencedorPartida = Partida.RealizarPartida (_ListaFilmes[0], _ListaFilmes[1]);
+                    _ListaFilmes.RemoveAt (0);
+                    _ListaFilmes.RemoveAt (0);
+                    proximaFase.Add (vencedorPartida);
+                } while (_ListaFilmes.Count > 0);
+
+                _ListaFilmes.AddRange (proximaFase);
+                proximaFase.Clear ();
+
                 if (_ListaFilmes.Count <= 2) {
                     var vencedor = Partida.RealizarPartida (_ListaFilmes.FirstOrDefault (), _ListaFilmes.LastOrDefault ());
                     vencedores.Add (vencedor);
-                    vencedores.Add (_ListaFilmes.LastOrDefault ());
+
+                    if (!vencedor.Equals (_ListaFilmes.LastOrDefault ()))
+                        vencedores.Add (_ListaFilmes.LastOrDefault ());
                 }
             }
             while (vencedores.Count <= 0);
