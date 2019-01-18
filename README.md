@@ -1,6 +1,9 @@
 ## Copa Filmes
 A Copa do mundo de filmes funciona da seguinte maneira: uma lista inicial de 8 filmes é selecionada e, dentre esses filmes, são realizadas partidas para verificar quem é o vencedor. 
     
+#### Navegabilidade
+As telas da Copa Filmes são responsivas, ao executar o projeto você poderá verificar tanto no seu computador, tablet ou smartphone o filme que vai ser o campeão!
+    
 ## Como executar o projeto:
 É necessário clonar o repositório para uma pasta em seu computador.
 
