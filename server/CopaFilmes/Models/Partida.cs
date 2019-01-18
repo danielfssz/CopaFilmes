@@ -10,6 +10,7 @@ namespace CopaFilmes.Models {
             else if (filme2.Nota > filme1.Nota)
                 vencedor = filme2;
             else {
+                // Ordena em uma lista por ordem alfabetica e pega o primeiro
                 var filmes = new List<Filme> ();
                 filmes.Add (filme1);
                 filmes.Add (filme2);
